@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Court Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Logout shared script -->
+    <script src="logout.js"></script>
+
+
+    <!-- Court JS -->
+    <script src="court_dashboard.js" defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .topbar {
+            background: #2f3640;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #273c75;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            width: 200px;
+        }
+
+        button:hover {
+            background: #192a56;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <h2>Court Dashboard</h2>
+        <button id="logoutBtn" class="btn btn-danger btn-sm">Logout</button>
+
+    </div>
+
+    <div class="card-container">
+        <div class="card" id="profileCard">
+            <h3>User Profile</h3>
+            <p><strong>Name:</strong> <span id="courtName">Loading...</span></p>
+            <p><strong>Username:</strong> <span id="courtUsername">Loading...</span></p>
+            <p><strong>Role:</strong> Court</p>
+        </div>
+
+        <div class="card">
+            <h3>Summary</h3>
+            <p>Pending Cases: <strong id="pendingCases">0</strong></p>
+            <p>Submitted Reports: <strong id="submittedReports">0</strong></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="goToCases()">View Cases</button>
+        <button onclick="goToUpload()">Upload Evidence</button>
+        <button onclick="goToReports()">Submit Reports</button>
+    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            localStorage.clear();
+            window.location.href = "index.html";
+        });
+    }
+});
+</script>
+
+</body>
+</html>
