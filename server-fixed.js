@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from 'express';
 import { MongoClient } from 'mongodb';
 
@@ -5,7 +8,9 @@ const app = express();
 const PORT = 3000;
 
 // the finally fixed connectin scrpts guys - No TLS
-const uri = "mongodb+srv://garnetgithinji_db_user:D0sTIQOoYpghuuyR@deccm.b2yblee.mongodb.net/DECCMSYSTEM?retryWrites=true&w=majority&tls=false";
+const uri = process.env.MONGODB_URI;
+
+
 
 app.use(express.json());
 
