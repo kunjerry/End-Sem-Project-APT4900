@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import fs from "fs";
 import path from "path";
@@ -5,10 +8,7 @@ import { fileURLToPath } from "url";
 import crypto from "crypto";
 import multer from "multer";
 import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
 import bodyParser from "body-parser";
-
-dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,7 +28,7 @@ async function connectToMongoDB() {
     const password = "Password123@";  
     const encodedPassword = encodeURIComponent(password);  
     
-    const uri = `mongodb+srv://${username}:${encodedPassword}@deccm.b2yblee.mongodb.net/DECCMSYSTEM?retryWrites=true&w=majority`;
+    const uri = process.env.MONGODB_URI;
     
     console.log("📡 Using URI:", `mongodb+srv://${username}:***@deccm.b2yblee.mongodb.net/...`);
     
